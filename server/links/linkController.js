@@ -55,7 +55,7 @@ module.exports = {
           var newLink = {
             url: url,
             visits: 0,
-            base_url: req.headers.origin,
+            base_url: req.headers.origin + '/api/links',
             title: title
           };
           return createLink(newLink);
@@ -72,6 +72,7 @@ module.exports = {
   },
 
   navToLink: function (req, res, next) {
+    console.log('navtolink invoked')
     var link = req.navLink;
     link.visits++;
     link.save(function (err, savedLink) {
