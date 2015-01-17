@@ -1,15 +1,25 @@
 angular.module('shortly.services', [])
 
 .factory('Links', function ($http) {
-  var postLink = function(link){
+  var addLink = function(link){
     return $http({
       method: 'POST',
       url: '/api/links/',
       data: link
     });
-    // .then(function (resp) {
-    //   return resp;
-    // });
+  };
+
+  var getLink = function(link){
+    return $http({
+      method: 'GET',
+      url: '/api/links/',
+      data: link
+    });
+  };
+
+  return {
+    addLink: addLink,
+    getLink: getLink
   };
 })
 
@@ -57,6 +67,6 @@ angular.module('shortly.services', [])
     signin: signin,
     signup: signup,
     isAuth: isAuth,
-    signout: signout
+    signout: signout,
   };
 });
